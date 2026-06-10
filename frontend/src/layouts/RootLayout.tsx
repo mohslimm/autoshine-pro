@@ -39,7 +39,7 @@ export const RootLayout = () => {
       if (target) {
         // slight delay to ensure render
         setTimeout(() => {
-          lenis.scrollTo(target);
+          lenis.scrollTo(target as HTMLElement);
         }, 100);
       }
     }

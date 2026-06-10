@@ -2,7 +2,6 @@ import { memo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { VARIANTS } from '@/lib/variants';
 
 export const Navbar = memo(() => {
   const [isScrolled, setIsScrolled] = useState(false);
