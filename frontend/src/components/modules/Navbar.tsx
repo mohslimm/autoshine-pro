@@ -38,7 +38,7 @@ export const Navbar = memo(() => {
           {/* Gauche : Logo */}
           <Link to="/" className="flex items-center group shrink-0">
             <motion.img 
-              src="/logo-notxt.png" 
+              src="/images/logo-notxt.png" 
               alt="AutoShine Pro Logo" 
               className="h-12 md:h-16 w-auto" 
               initial={{ opacity: 0.9 }}

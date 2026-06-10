@@ -12,7 +12,7 @@ export const Footer = memo(() => {
         <div>
           <Link to="/" className="inline-block mb-6">
             <motion.img 
-              src="/logo-notxt.png" 
+              src="/images/logo-notxt.png" 
               alt="AutoShine Pro Logo" 
               className="h-16 md:h-20 w-auto" 
               initial={{ opacity: 0.9 }}
