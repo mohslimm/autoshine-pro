@@ -69,21 +69,23 @@ export const Hero = memo(() => {
         <motion.div variants={ANTIGRAVITY_VARIANTS.item} className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full sm:w-auto">
           
           {/* Primary CTA */}
-          <a 
+          <motion.a 
             href="#contact" 
-            className="w-full sm:w-auto px-8 py-4 bg-gold-500 text-[#0A0A0A] rounded-full font-body text-[0.75rem] font-semibold tracking-[0.2em] uppercase transition-all duration-300 ease-in-out hover:bg-gold-400 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(212,175,55,0.25)]"
+            whileTap={{ scale: 0.95 }}
+            className="w-full sm:w-auto px-8 py-4 bg-gold-500 text-[#0A0A0A] rounded-full font-body text-[0.75rem] font-semibold tracking-[0.2em] uppercase transition-all duration-300 ease-in-out hover:bg-gold-400 hover:scale-[1.02] hover:shadow-[0_0_30px_var(--gold-glow)]"
           >
             Demander un devis
-          </a>
+          </motion.a>
 
           {/* Secondary CTA (Text Link with arrow) */}
-          <a 
+          <motion.a 
             href="#services" 
+            whileTap={{ scale: 0.95 }}
             className="w-full sm:w-auto px-8 py-4 flex items-center justify-center gap-3 font-body text-[0.75rem] font-medium tracking-[0.2em] uppercase text-text-muted hover:text-gold-500 transition-colors duration-300 group"
           >
             <span>Découvrir nos services</span>
             <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
-          </a>
+          </motion.a>
           
         </motion.div>
       </motion.div>

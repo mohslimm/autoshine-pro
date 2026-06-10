@@ -49,7 +49,7 @@ export const Zone = memo(() => {
             <svg viewBox="0 0 400 400" fill="none" className="absolute inset-0 w-full h-full opacity-20 text-gold-500 transition-opacity duration-700 group-hover:opacity-40">
               <circle cx="200" cy="200" r="160" stroke="currentColor" strokeWidth=".8" strokeDasharray="6 4" />
               <circle cx="200" cy="200" r="90" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 3" />
-              <circle cx="200" cy="200" r="36" stroke="currentColor" strokeWidth="1.8" fill="rgba(197,160,89,.07)" />
+              <circle cx="200" cy="200" r="36" stroke="currentColor" strokeWidth="1.8" fill="var(--gold-glow)" />
               <line x1="40" y1="200" x2="360" y2="200" stroke="currentColor" strokeWidth=".6" />
               <line x1="200" y1="40" x2="200" y2="360" stroke="currentColor" strokeWidth=".6" />
               <line x1="87" y1="87" x2="313" y2="313" stroke="currentColor" strokeWidth=".4" opacity=".4" />
@@ -70,7 +70,7 @@ export const Zone = memo(() => {
             </svg>
 
             <div className="text-center relative z-10">
-              <span className="text-[2.6rem] block mb-3 drop-shadow-[0_0_15px_rgba(197,160,89,0.5)]">📍</span>
+              <span className="text-[2.6rem] block mb-3 drop-shadow-[0_0_15px_var(--gold-glow)]">📍</span>
               <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-text-primary font-semibold bg-surface/50 backdrop-blur-sm px-4 py-1.5 border border-border-subtle inline-block">
                 Paris · Île-de-France
               </div>

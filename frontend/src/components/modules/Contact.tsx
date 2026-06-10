@@ -31,10 +31,15 @@ export const Contact = memo(() => {
 
   const onSubmit = async (data: ContactForm) => {
     setStatus('loading');
+    setErrorMessage('');
+    
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
     
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
@@ -53,6 +58,7 @@ export const Contact = memo(() => {
         }),
       });
 
+      clearTimeout(timeoutId);
       const result = await response.json();
       
       if (result.success) {
@@ -62,9 +68,14 @@ export const Contact = memo(() => {
         setStatus('error');
         setErrorMessage(result.message || "Une erreur est survenue lors de l'envoi.");
       }
-    } catch (err) {
+    } catch (err: any) {
+      clearTimeout(timeoutId);
       setStatus('error');
-      setErrorMessage("Impossible de joindre le serveur. Veuillez vérifier votre connexion.");
+      if (err.name === 'AbortError') {
+        setErrorMessage("Délai d'attente dépassé. Veuillez réessayer.");
+      } else {
+        setErrorMessage("Impossible de joindre le serveur. Veuillez vérifier votre connexion.");
+      }
     }
   };
 

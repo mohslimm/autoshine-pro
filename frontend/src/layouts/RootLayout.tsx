@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { MotionConfig } from 'framer-motion';
 import { Navbar } from '../components/modules/Navbar';
 import { Footer } from '../components/modules/Footer';
 import { WhatsAppButton } from '../components/modules/WhatsAppButton';
@@ -50,14 +51,16 @@ export const RootLayout = () => {
   }, [hash]);
 
   return (
-    <div className="min-h-screen bg-void text-text-primary selection:bg-gold-500/30 flex flex-col">
-      <Navbar />
-      <main className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <ScrollToTopButton />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-void text-text-primary selection:bg-gold-500/30 flex flex-col">
+        <Navbar />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+        <WhatsAppButton />
+        <ScrollToTopButton />
+      </div>
+    </MotionConfig>
   );
 };
