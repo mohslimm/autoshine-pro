@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoShine Pro — Detailing Premium pour Concessionnaires · Paris</title>
+  <meta name="description" content="AutoShine Pro : détailing automobile premium à domicile pour les concessionnaires de Paris et Île-de-France. Qualité Showroom, Où Que Vous Soyez.">
+  <meta property="og:title" content="AutoShine Pro — Detailing Premium Paris">
+  <meta property="og:description" content="Partenaire officiel des concessionnaires automobiles en Île-de-France.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ========== VARIABLES ========== */
+:root {
+  --void:    #030b1a;
+  --deep:    #060f24;
+  --surface: #0b1835;
+  --glass:   rgba(11,24,53,0.65);
+  --border:  rgba(80,130,200,0.18);
+  --bh:      rgba(80,160,255,0.45);
+
+  --chrome:       #d8e2ee;
+  --chrome-hi:    #f2f6fb;
+  --chrome-mid:   #8ea5c0;
+  --chrome-lo:    #4a6080;
+
+  --blue:     #3b9eff;
+  --blue-hi:  #7ac8ff;
+  --blue-lo:  #1660b8;
+  --glow:     rgba(59,158,255,0.22);
+  --glow-hi:  rgba(59,158,255,0.45);
+
+  --silver-grad: linear-gradient(130deg, #7a9ab8 0%, #d8e2ee 35%, #f2f6fb 55%, #a0bace 80%, #8ea5c0 100%);
+  --blue-grad:   linear-gradient(130deg, #1660b8, #3b9eff, #7ac8ff);
+  --dark-grad:   linear-gradient(180deg, var(--void), var(--deep));
+
+  --f-display:   'Cinzel', serif;
+  --f-body:      'Barlow', sans-serif;
+  --f-cond:      'Barlow Condensed', sans-serif;
+}
+
+/* ========== RESET ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--f-body);
+  background: var(--void);
+  color: var(--chrome);
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* ========== UTILITIES ========== */
+.chrome  { background: var(--silver-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.blue-tx { background: var(--blue-grad);   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.sec-label {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--f-cond); font-size: .68rem; font-weight: 600;
+  letter-spacing: .32em; text-transform: uppercase; color: var(--blue);
+  margin-bottom: 16px;
+}
+.sec-label::before { content:''; width: 28px; height: 1px; background: var(--blue); }
+
+.sec-title {
+  font-family: var(--f-display); font-size: clamp(1.9rem,3.5vw,2.9rem);
+  font-weight: 600; line-height: 1.12; margin-bottom: 18px;
+}
+.sec-sub {
+  font-size: .95rem; font-weight: 300; color: var(--chrome-mid);
+  max-width: 500px; line-height: 1.82;
+}
+
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity .85s ease, transform .85s ease; }
+.reveal.up { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ========== NAV ========== */
+#nav {
+  position: fixed; top: 0; width: 100%; z-index: 999;
+  padding: 22px 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(3,11,26,0.72); backdrop-filter: blur(18px);
+  border-bottom: 1px solid transparent;
+  transition: all .35s ease;
+}
+#nav.stuck {
+  padding: 14px 64px;
+  background: rgba(3,11,26,0.96);
+  border-bottom-color: var(--border);
+}
+
+.nav-logo { display:flex; align-items:center; gap:11px; text-decoration:none; }
+.nav-logo-svg { width:38px; height:38px; flex-shrink:0; }
+.nav-logo-name {
+  font-family: var(--f-display); font-size:1.2rem; font-weight:600;
+  letter-spacing:.06em; background: var(--silver-grad);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+
+.nav-links { display:flex; align-items:center; gap:38px; list-style:none; }
+.nav-links a {
+  font-family: var(--f-cond); font-size:.75rem; font-weight:500;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--chrome-mid);
+  text-decoration:none; position:relative; transition:color .3s;
+}
+.nav-links a::after {
+  content:''; position:absolute; bottom:-5px; left:0; width:0; height:1px;
+  background:var(--blue); transition:width .3s;
+}
+.nav-links a:hover { color:var(--chrome-hi); }
+.nav-links a:hover::after { width:100%; }
+
+.nav-cta {
+  padding:10px 26px; border:1px solid var(--blue); border-radius:2px;
+  color:var(--blue-hi) !important; transition:all .3s !important;
+}
+.nav-cta:hover { background:var(--glow) !important; box-shadow:0 0 22px var(--glow) !important; }
+.nav-cta::after { display:none !important; }
+
+.nav-burger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+.nav-burger span { display:block; width:22px; height:1px; background:var(--chrome); transition:all .3s; }
+
+/* ========== HERO ========== */
+#hero {
+  position:relative; min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+}
+
+.hero-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(59,158,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,158,255,.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+}
+
+.hero-aurora {
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 60%, rgba(59,158,255,.09) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 30% at 30% 40%, rgba(20,80,180,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 70% 50%, rgba(20,80,180,.05) 0%, transparent 60%);
+}
+
+.hero-sweep {
+  position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(108deg, transparent 28%, rgba(200,220,255,.028) 50%, transparent 72%);
+  animation: sweep 10s ease-in-out infinite;
+}
+@keyframes sweep {
+  0%,100% { transform:translateX(-120%) skewX(-12deg); }
+  50%      { transform:translateX(220%)  skewX(-12deg); }
+}
+
+.hero-car-bg {
+  position:absolute; bottom:-2%; left:0; right:0;
+  display:flex; justify-content:center; pointer-events:none;
+  opacity:.055;
+}
+.hero-car-bg svg { width:100%; max-width:1300px; height:auto; }
+
+.hero-particles { position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.hparticle {
+  position:absolute; border-radius:50%; background:var(--blue);
+  animation: hpfloat var(--d) ease-in var(--del) infinite; opacity:0;
+}
+@keyframes hpfloat {
+  0%   { opacity:0;   transform:translateY(0) scale(1); }
+  12%  { opacity:.55; }
+  88%  { opacity:.1;  }
+  100% { opacity:0;   transform:translateY(-340px) scale(.25); }
+}
+
+.hero-content {
+  position:relative; z-index:2; text-align:center;
+  max-width:880px; padding:0 36px;
+  animation: hi 1.2s cubic-bezier(.2,0,.3,1) both;
+}
+@keyframes hi { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:none; } }
+
+.hero-pill {
+  display:inline-flex; align-items:center; gap:10px;
+  padding:8px 22px; border-radius:100px;
+  border:1px solid var(--bh); background:rgba(59,158,255,.08);
+  font-family:var(--f-cond); font-size:.68rem; font-weight:600;
+  letter-spacing:.26em; text-transform:uppercase; color:var(--blue-hi);
+  margin-bottom:30px; animation: hi 1.2s ease .18s both;
+}
+.hero-pill-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--blue);
+  box-shadow:0 0 8px var(--blue); animation:blink 2s ease infinite;
+}
+@keyframes blink { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.6);opacity:.4;} }
+
+.hero-h1 {
+  font-family:var(--f-display); font-size:clamp(3rem,7vw,5.6rem);
+  font-weight:700; line-height:1.04; letter-spacing:-.01em;
+  animation: hi 1.2s ease .28s both;
+}
+.hero-h1-sub {
+  display:block; font-size:clamp(2rem,4.5vw,3.8rem);
+  font-weight:400; font-style:italic; color:var(--chrome-mid);
+  animation: hi 1.2s ease .38s both;
+}
+
+.hero-rule {
+  width:72px; height:1px; margin:26px auto;
+  background:linear-gradient(90deg, transparent, var(--blue), transparent);
+  animation: hi 1.2s ease .44s both;
+}
+
+.hero-p {
+  font-size:1.08rem; font-weight:300; color:var(--chrome-mid);
+  max-width:560px; margin:0 auto 46px; line-height:1.82;
+  animation: hi 1.2s ease .5s both;
+}
+
+.hero-btns { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; animation: hi 1.2s ease .58s both; }
+
+.btn-p {
+  padding:16px 40px; background:var(--blue-grad); border:none; border-radius:2px;
+  font-family:var(--f-cond); font-size:.78rem; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:#fff;
+  text-decoration:none; cursor:pointer; position:relative; overflow:hidden;
+  box-shadow:0 0 36px rgba(59,158,255,.32); transition:all .3s ease;
+}
+.btn-p::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(108deg, transparent 30%, rgba(255,255,255,.14) 50%, transparent 70%);
+  transform:translateX(-120%); transition:transform .55s ease;
+}
+.btn-p:hover { transform:translateY(-2px); box-shadow:0 0 56px rgba(59,158,255,.5); }
+.btn-p:hover::before { transform:translateX(220%); }
+
+.btn-s {
+  padding:16px 40px; background:transparent; border:1px solid var(--border);
+  border-radius:2px; font-family:var(--f-cond); font-size:.78rem; font-weight:600;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--chrome-mid);
+  text-decoration:none; transition:all .3s;
+}
+.btn-s:hover { border-color:var(--chrome-mid); color:var(--chrome); }
+
+.hero-scroll-ind {
+  position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  opacity:.35; animation: hi 1.2s ease 1s both;
+}
+.hero-scroll-ind span { font-family:var(--f-cond); font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; }
+.hero-scroll-line { width:1px; height:38px; background:linear-gradient(var(--chrome-mid), transparent); animation:scrollpulse 2.2s ease infinite; }
+@keyframes scrollpulse { 0%,100%{transform:scaleY(1);transform-origin:top;} 50%{transform:scaleY(0);transform-origin:top;} }
+
+/* ========== STATS BAND ========== */
+.stats-band {
+  background:var(--deep);
+  border-top:1px solid var(--border); border-bottom:1px solid var(--border);
+}
+.stats-inner {
+  max-width:1160px; margin:0 auto; padding:36px 64px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+}
+.stat { text-align:center; position:relative; padding:16px 10px; }
+.stat:not(:last-child)::after {
+  content:''; position:absolute; right:0; top:25%; height:50%; width:1px; background:var(--border);
+}
+.stat-n {
+  font-family:var(--f-display); font-size:2.4rem; font-weight:700;
+  background:var(--silver-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  line-height:1; margin-bottom:7px;
+}
+.stat-l { font-family:var(--f-cond); font-size:.68rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--chrome-mid); }
+
+/* ========== SERVICES ========== */
+#services { background:linear-gradient(180deg, var(--void) 0%, var(--deep) 100%); }
+.services-wrap { max-width:1200px; margin:0 auto; padding:120px 64px; }
+.services-hd {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  gap:40px; margin-bottom:56px;
+}
+.services-hd .sec-sub { text-align:right; max-width:340px; }
+
+.svc-grid {
+  display:grid; grid-template-columns:repeat(2,1fr);
+  gap:2px; background:var(--border);
+}
+.svc {
+  background:var(--deep); padding:52px 46px;
+  position:relative; overflow:hidden; cursor:default;
+  transition:background .4s ease;
+}
+.svc::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 100%, var(--glow), transparent);
+  opacity:0; transition:opacity .4s;
+}
+.svc:hover { background:var(--surface); }
+.svc:hover::before { opacity:1; }
+.svc::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background:var(--blue-grad); transform:scaleX(0); transform-origin:left; transition:transform .45s ease;
+}
+.svc:hover::after { transform:scaleX(1); }
+
+.svc-n { font-family:var(--f-display); font-size:.68rem; font-weight:700; letter-spacing:.3em; color:var(--blue); margin-bottom:22px; }
+.svc-ico { width:48px; height:48px; margin-bottom:22px; color:var(--chrome-mid); transition:color .4s; }
+.svc:hover .svc-ico { color:var(--blue-hi); }
+.svc-title { font-family:var(--f-display); font-size:1.25rem; font-weight:600; color:var(--chrome-hi); margin-bottom:12px; line-height:1.3; }
+.svc-desc { font-size:.88rem; font-weight:300; color:var(--chrome-mid); line-height:1.82; margin-bottom:24px; }
+.svc-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.svc-list li {
+  font-family:var(--f-cond); font-size:.78rem; font-weight:500;
+  letter-spacing:.04em; color:var(--chrome-mid);
+  display:flex; align-items:center; gap:10px;
+}
+.svc-list li::before { content:''; width:14px; height:1px; background:var(--blue); flex-shrink:0; }
+
+/* ========== WHY US ========== */
+#why {
+  background:var(--deep);
+  padding:0;
+}
+.why-inner {
+  max-width:1200px; margin:0 auto; padding:120px 64px;
+  display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:center;
+}
+
+.why-visual { position:relative; }
+.why-main {
+  background:var(--surface); border:1px solid var(--border); padding:50px;
+  position:relative; overflow:hidden;
+}
+.why-main::before {
+  content:''; position:absolute; top:-1px; left:-1px; right:-1px; height:2px;
+  background:var(--blue-grad);
+}
+.why-main-ico { width:56px; height:56px; color:var(--blue); margin-bottom:20px; }
+.why-main-title { font-family:var(--f-display); font-size:1.55rem; font-weight:700; color:var(--chrome-hi); margin-bottom:8px; line-height:1.2; }
+.why-main-sub { font-family:var(--f-cond); font-size:.68rem; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:var(--blue); }
+
+.why-chip {
+  position:absolute; background:var(--deep);
+  border:1px solid var(--border); padding:18px 22px;
+  min-width:120px;
+}
+.why-chip-tr { top:-18px; right:-18px; }
+.why-chip-bl { bottom:-18px; left:-18px; }
+.why-chip-n {
+  font-family:var(--f-display); font-size:1.75rem; font-weight:700;
+  background:var(--silver-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+  line-height:1; margin-bottom:4px;
+}
+.why-chip-l { font-family:var(--f-cond); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase; color:var(--chrome-mid); }
+
+.why-pts { display:flex; flex-direction:column; gap:30px; margin-top:38px; }
+.why-pt { display:flex; gap:18px; align-items:flex-start; }
+.why-pt-ico {
+  width:44px; height:44px; flex-shrink:0;
+  border:1px solid var(--border); background:var(--surface);
+  display:flex; align-items:center; justify-content:center; color:var(--blue);
+  transition:all .3s;
+}
+.why-pt:hover .why-pt-ico { border-color:var(--blue); background:var(--glow); }
+.why-pt-title { font-family:var(--f-display); font-size:.97rem; font-weight:600; color:var(--chrome); margin-bottom:5px; }
+.why-pt-desc { font-size:.86rem; font-weight:300; color:var(--chrome-mid); line-height:1.75; }
+
+/* ========== PROCESS ========== */
+#process { padding:0; }
+.process-wrap { max-width:1200px; margin:0 auto; padding:120px 64px; }
+.process-hd { text-align:center; margin-bottom:72px; }
+
+.process-grid {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  position:relative;
+}
+.process-grid::before {
+  content:''; position:absolute; top:36px; left:12%; right:12%; height:1px;
+  background:linear-gradient(90deg, transparent, var(--border), var(--blue), var(--border), transparent);
+  pointer-events:none;
+}
+
+.pstep { padding:0 28px; text-align:center; }
+.pstep-circle {
+  width:72px; height:72px; border-radius:50%;
+  border:1px solid var(--border); background:var(--deep);
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 26px; color:var(--blue);
+  position:relative; z-index:1; transition:all .4s;
+}
+.pstep:hover .pstep-circle { border-color:var(--blue); box-shadow:0 0 32px var(--glow); background:var(--surface); }
+.pstep-n {
+  position:absolute; top:-8px; right:-8px;
+  width:22px; height:22px; border-radius:50%;
+  background:var(--blue-grad); color:#fff;
+  font-family:var(--f-cond); font-size:.62rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.pstep-title { font-family:var(--f-display); font-size:.97rem; font-weight:600; color:var(--chrome); margin-bottom:10px; }
+.pstep-desc { font-size:.84rem; font-weight:300; color:var(--chrome-mid); line-height:1.75; }
+
+/* ========== TESTIMONIALS ========== */
+#testimonials { background:var(--deep); padding:0; }
+.testi-wrap { max-width:1200px; margin:0 auto; padding:120px 64px; }
+
+.testi-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:2px; background:var(--border); margin-top:56px;
+}
+.tcard {
+  background:var(--deep); padding:44px 36px;
+  transition:background .3s;
+}
+.tcard:hover { background:var(--surface); }
+
+.tcard-stars { display:flex; gap:4px; margin-bottom:22px; }
+.tcard-stars span { color:var(--blue); font-size:.88rem; }
+
+.tcard-quote {
+  font-size:.9rem; font-weight:300; color:var(--chrome-mid);
+  line-height:1.82; margin-bottom:26px; font-style:italic;
+  position:relative; padding-left:18px;
+}
+.tcard-quote::before {
+  content:'"'; position:absolute; left:0; top:-4px;
+  font-family:var(--f-display); font-size:2.4rem;
+  color:var(--blue); line-height:1;
+}
+
+.tcard-author { border-top:1px solid var(--border); padding-top:18px; }
+.tcard-name { font-family:var(--f-display); font-size:.9rem; font-weight:600; color:var(--chrome); margin-bottom:4px; }
+.tcard-role { font-family:var(--f-cond); font-size:.68rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); }
+
+/* ========== ZONE ========== */
+#zone { padding:0; }
+.zone-wrap { max-width:1200px; margin:0 auto; padding:120px 64px; }
+.zone-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; margin-top:56px; align-items:start; }
+
+.zone-map-box {
+  background:var(--surface); border:1px solid var(--border);
+  height:380px; display:flex; align-items:center; justify-content:center;
+  position:relative; overflow:hidden;
+}
+.zone-map-box svg { position:absolute; inset:0; width:100%; height:100%; opacity:.18; }
+.zone-map-label { text-align:center; position:relative; z-index:1; }
+.zone-map-pin { font-size:2.6rem; opacity:.55; display:block; margin-bottom:10px; }
+.zone-map-txt { font-family:var(--f-cond); font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--chrome-mid); }
+
+.zone-list { display:flex; flex-direction:column; gap:10px; }
+.zone-row {
+  display:flex; align-items:center; gap:14px; padding:16px 20px;
+  background:var(--surface); border:1px solid var(--border);
+  font-family:var(--f-cond); font-size:.85rem; font-weight:500;
+  letter-spacing:.06em; color:var(--chrome); transition:border-color .3s;
+}
+.zone-row:hover { border-color:var(--blue); }
+.zone-row.special { border-color:var(--blue); background:rgba(59,158,255,.06); font-weight:600; }
+.zone-dot { width:7px; height:7px; border-radius:50%; background:var(--blue); flex-shrink:0; }
+.zone-dot.alt { background:var(--chrome-mid); }
+
+/* ========== CONTACT ========== */
+#contact { background:var(--deep); padding:0; }
+.contact-inner { max-width:1200px; margin:0 auto; padding:120px 64px; display:grid; grid-template-columns:1fr 1.1fr; gap:80px; }
+
+.ci-title { font-family:var(--f-display); font-size:clamp(1.7rem,3vw,2.5rem); font-weight:600; line-height:1.18; margin-bottom:14px; }
+.ci-desc { font-size:.9rem; font-weight:300; color:var(--chrome-mid); line-height:1.82; margin-bottom:42px; }
+
+.ci-links { display:flex; flex-direction:column; gap:14px; }
+.ci-link {
+  display:flex; align-items:center; gap:14px; padding:18px 22px;
+  background:var(--surface); border:1px solid var(--border);
+  text-decoration:none; transition:all .3s;
+}
+.ci-link:hover { border-color:var(--blue); background:rgba(59,158,255,.05); }
+.ci-link-ico {
+  width:42px; height:42px; flex-shrink:0;
+  background:var(--glow); display:flex; align-items:center; justify-content:center; color:var(--blue);
+}
+.ci-link-lbl { font-family:var(--f-cond); font-size:.63rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--chrome-mid); margin-bottom:3px; }
+.ci-link-val { font-family:var(--f-display); font-size:.97rem; color:var(--chrome); }
+
+.cf { display:flex; flex-direction:column; gap:14px; }
+.cf .sec-label { margin-bottom:22px; }
+.fg { display:flex; flex-direction:column; gap:7px; }
+.flbl { font-family:var(--f-cond); font-size:.67rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--chrome-mid); }
+.finp, .ftxt, .fsel {
+  background:var(--surface); border:1px solid var(--border);
+  padding:13px 17px; font-family:var(--f-body); font-size:.9rem;
+  color:var(--chrome); outline:none; width:100%;
+  transition:border-color .3s;
+}
+.finp:focus, .ftxt:focus, .fsel:focus { border-color:var(--blue); }
+.finp::placeholder, .ftxt::placeholder { color:var(--chrome-lo); }
+.ftxt { resize:vertical; min-height:110px; }
+.fsel { appearance:none; cursor:pointer; padding-right:38px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%238ea5c0' d='M5 6 0 0h10z'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 15px center;
+}
+.fsel option { background:var(--deep); }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.fsubmit {
+  width:100%; padding:17px; background:var(--blue-grad); border:none;
+  font-family:var(--f-cond); font-size:.78rem; font-weight:700;
+  letter-spacing:.24em; text-transform:uppercase; color:#fff; cursor:pointer;
+  box-shadow:0 0 32px rgba(59,158,255,.28); transition:all .3s;
+  position:relative; overflow:hidden;
+}
+.fsubmit::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(108deg, transparent 30%, rgba(255,255,255,.12) 50%, transparent 70%);
+  transform:translateX(-120%); transition:transform .55s;
+}
+.fsubmit:hover { box-shadow:0 0 52px rgba(59,158,255,.48); }
+.fsubmit:hover::before { transform:translateX(220%); }
+.fsubmit:disabled { opacity:.7; cursor:not-allowed; }
+
+/* ========== FOOTER ========== */
+footer { background:#01060f; border-top:1px solid var(--border); padding:60px 64px; }
+.footer-grid {
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:2fr 1fr 1fr; gap:60px; margin-bottom:48px;
+}
+.fbrand-name { font-family:var(--f-display); font-size:1.45rem; font-weight:700; background:var(--silver-grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:6px; }
+.fbrand-tag { font-family:var(--f-cond); font-size:.65rem; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:var(--blue); margin-bottom:18px; }
+.fbrand-desc { font-size:.84rem; font-weight:300; color:var(--chrome-mid); line-height:1.8; }
+.fcol-title { font-family:var(--f-cond); font-size:.68rem; font-weight:700; letter-spacing:.26em; text-transform:uppercase; color:var(--chrome); margin-bottom:22px; }
+.flinks { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.flinks a { font-size:.86rem; font-weight:300; color:var(--chrome-mid); text-decoration:none; transition:color .3s; }
+.flinks a:hover { color:var(--chrome); }
+.footer-bottom { max-width:1200px; margin:0 auto; padding-top:28px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+.footer-copy { font-size:.76rem; color:var(--chrome-lo); }
+
+/* ========== TOAST ========== */
+.toast {
+  position:fixed; bottom:28px; right:28px; z-index:9999;
+  background:var(--surface); border:1px solid var(--blue);
+  padding:15px 22px; max-width:320px;
+  font-family:var(--f-cond); font-size:.78rem; letter-spacing:.06em; color:var(--chrome);
+  transform:translateX(140%); transition:transform .4s cubic-bezier(.2,0,.3,1);
+}
+.toast.show { transform:none; }
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:1024px) {
+  #nav, #nav.stuck { padding-left:32px; padding-right:32px; }
+  .stats-inner, .services-wrap, .why-inner, .process-wrap, .testi-wrap, .zone-wrap, .contact-inner, footer { padding-left:32px; padding-right:32px; }
+}
+@media(max-width:840px) {
+  .nav-links { display:none; }
+  .nav-burger { display:flex; }
+  .nav-mobile-open .nav-links {
+    display:flex; flex-direction:column; gap:0;
+    position:absolute; top:100%; left:0; right:0;
+    background:rgba(3,11,26,.98);
+    border-bottom:1px solid var(--border); padding:16px 32px 24px;
+  }
+  .nav-mobile-open .nav-links a { padding:12px 0; border-bottom:1px solid var(--border); }
+  .nav-mobile-open .nav-links .nav-cta { border:none; padding-top:14px; }
+
+  .stats-inner { grid-template-columns:repeat(2,1fr); }
+  .stat:nth-child(2)::after, .stat:nth-child(4)::after { display:none; }
+
+  .services-hd { flex-direction:column; }
+  .services-hd .sec-sub { text-align:left; max-width:100%; }
+  .svc-grid { grid-template-columns:1fr; }
+
+  .why-inner { grid-template-columns:1fr; gap:56px; }
+  .process-grid { grid-template-columns:repeat(2,1fr); gap:44px 20px; }
+  .process-grid::before { display:none; }
+  .testi-grid { grid-template-columns:1fr; }
+  .zone-grid { grid-template-columns:1fr; }
+  .contact-inner { grid-template-columns:1fr; }
+  .frow { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:40px; }
+  .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <svg class="nav-logo-svg" viewBox="0 0 38 38" fill="none">
+      <!-- car body -->
+      <path d="M4 27C4 27 7 21 12 20L19 18L26 20C31 21 34 27 34 27" stroke="#8ea5c0" stroke-width="1.4" fill="none"/>
+      <path d="M4 27 L34 27 L34 31 L4 31Z" fill="#0b1835" stroke="#8ea5c0" stroke-width=".9"/>
+      <!-- wheels -->
+      <circle cx="11" cy="31" r="3.5" stroke="#8ea5c0" stroke-width="1" fill="none"/>
+      <circle cx="27" cy="31" r="3.5" stroke="#8ea5c0" stroke-width="1" fill="none"/>
+      <!-- water drop -->
+      <path d="M27 6C27 6 23 11 23 14C23 16.2 24.8 18 27 18C29.2 18 31 16.2 31 14C31 11 27 6 27 6Z" fill="#3b9eff"/>
+      <!-- sparkle -->
+      <path d="M18 8L18.7 10L20.5 10L19.1 11.2L19.6 13L18 12.1L16.4 13L16.9 11.2L15.5 10L17.3 10Z" fill="#d8e2ee" opacity=".75"/>
+    </svg>
+    <span class="nav-logo-name">AutoShine Pro</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Expertise</a></li>
+    <li><a href="#process">Processus</a></li>
+    <li><a href="#testimonials">Références</a></li>
+    <li><a href="#contact" class="nav-cta">Demander un Devis</a></li>
+  </ul>
+  <div class="nav-burger" id="burger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-aurora"></div>
+  <div class="hero-sweep"></div>
+  <div class="hero-particles" id="hparticles"></div>
+
+  <div class="hero-car-bg" aria-hidden="true">
+    <svg viewBox="0 0 1300 320" fill="none">
+      <path d="M80 260C80 260 220 145 420 128L600 118L700 118L880 128C1080 145 1220 260 1220 260" stroke="#3b9eff" stroke-width="2" fill="none"/>
+      <path d="M80 260L1220 260L1220 290L80 290Z" fill="#0b1835" stroke="#3b9eff" stroke-width="1.2" opacity=".6"/>
+      <ellipse cx="270" cy="290" rx="72" ry="22" stroke="#3b9eff" stroke-width="1.5" fill="none" opacity=".45"/>
+      <ellipse cx="1030" cy="290" rx="72" ry="22" stroke="#3b9eff" stroke-width="1.5" fill="none" opacity=".45"/>
+      <path d="M400 128 L440 80 L620 66 L760 66 L840 128" stroke="#3b9eff" stroke-width="1.5" fill="none" opacity=".6"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-pill">
+      <span class="hero-pill-dot"></span>
+      Partenaire Officiel des Concessionnaires
+    </div>
+    <h1 class="hero-h1">
+      <span class="chrome">Qualité Showroom,</span>
+      <span class="hero-h1-sub">Où Que Vous Soyez</span>
+    </h1>
+    <div class="hero-rule"></div>
+    <p class="hero-p">Détailing automobile premium à domicile pour les concessionnaires de Paris et d'Île-de-France. Chaque véhicule livré dans un état irréprochable.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-p">Demander un Devis</a>
+      <a href="#services" class="btn-s">Découvrir nos Services</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-ind">
+    <span>Découvrir</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <div class="stat-n" data-cnt="200" data-suf="+">0</div>
+      <div class="stat-l">Concessions Partenaires</div>
+    </div>
+    <div class="stat reveal reveal-d1">
+      <div class="stat-n" data-cnt="5000" data-suf="+">0</div>
+      <div class="stat-l">Véhicules Traités</div>
+    </div>
+    <div class="stat reveal reveal-d2">
+      <div class="stat-n" data-cnt="98" data-suf="%">0</div>
+      <div class="stat-l">Satisfaction Client</div>
+    </div>
+    <div class="stat reveal reveal-d3">
+      <div class="stat-n">Paris&nbsp;IDF</div>
+      <div class="stat-l">Zone d'Intervention</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services">
+  <div class="services-wrap">
+    <div class="services-hd reveal">
+      <div>
+        <div class="sec-label">Nos Prestations</div>
+        <h2 class="sec-title chrome">Des Services Conçus<br>Pour les Professionnels</h2>
+      </div>
+      <p class="sec-sub">Nous intervenons directement dans vos locaux, sans aucune interruption de votre activité commerciale.</p>
+    </div>
+
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-n">01</div>
+        <svg class="svc-ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="26" cy="26" r="20"/>
+          <path d="M16 26L22 32L36 18"/>
+          <circle cx="26" cy="26" r="4" stroke-dasharray="3 2"/>
+        </svg>
+        <h3 class="svc-title">Préparation<br>à la Livraison</h3>
+        <p class="svc-desc">Finition irréprochable avant chaque remise au client. Votre réputation reflétée dans chaque véhicule.</p>
+        <ul class="svc-list">
+          <li>Nettoyage intérieur complet</li>
+          <li>Polissage & lustrage carrosserie</li>
+          <li>Vitres & optiques traités</li>
+          <li>Désodorisation & présentation finale</li>
+        </ul>
+      </div>
+
+      <div class="svc reveal reveal-d1">
+        <div class="svc-n">02</div>
+        <svg class="svc-ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="4" y="14" width="44" height="26" rx="2"/>
+          <path d="M14 14V10L38 10V14"/>
+          <path d="M4 26L48 26"/>
+          <circle cx="15" cy="20" r="2.5"/>
+          <circle cx="37" cy="20" r="2.5"/>
+        </svg>
+        <h3 class="svc-title">Entretien du<br>Parc Exposition</h3>
+        <p class="svc-desc">Vos véhicules en vitrine maintenus dans un état showroom permanent. Programmes réguliers sur mesure.</p>
+        <ul class="svc-list">
+          <li>Programme mensuel personnalisé</li>
+          <li>Nettoyage jantes & pneus</li>
+          <li>Entretien plastiques & cuirs</li>
+          <li>Rapport d'état détaillé fourni</li>
+        </ul>
+      </div>
+
+      <div class="svc reveal reveal-d2">
+        <div class="svc-n">03</div>
+        <svg class="svc-ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M26 8C26 8 10 20 10 32C10 40.8 17.2 48 26 48C34.8 48 42 40.8 42 32C42 20 26 8 26 8Z"/>
+          <path d="M26 20C26 20 18 27 18 32C18 36.4 21.6 40 26 40C30.4 40 34 36.4 34 32C34 27 26 20 26 20Z" stroke-dasharray="3 2"/>
+        </svg>
+        <h3 class="svc-title">Protection<br>Céramique Premium</h3>
+        <p class="svc-desc">Revêtements céramique professionnels pour une protection 2 ans+ et un éclat permanent de vos véhicules.</p>
+        <ul class="svc-list">
+          <li>Traitement céramique longue durée</li>
+          <li>Protection UV & contaminants</li>
+          <li>Hydrophobicité maximale</li>
+          <li>Certificat de traitement remis</li>
+        </ul>
+      </div>
+
+      <div class="svc reveal reveal-d3">
+        <div class="svc-n">04</div>
+        <svg class="svc-ico" viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M8 42L44 42"/>
+          <path d="M14 42V20L26 12L38 20V42"/>
+          <path d="M20 42V28L32 28V42"/>
+          <circle cx="26" cy="24" r="3"/>
+        </svg>
+        <h3 class="svc-title">Reconditionnement<br>Véhicules d'Occasion</h3>
+        <p class="svc-desc">Remise en état complète des reprises pour maximiser leur valeur à la revente et réduire le délai de vente.</p>
+        <ul class="svc-list">
+          <li>Correction défauts carrosserie</li>
+          <li>Décontamination ferreux</li>
+          <li>Rénovation sellerie</li>
+          <li>Audit visuel complet inclus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<div id="why">
+  <div class="why-inner">
+    <div class="why-visual reveal">
+      <div class="why-main">
+        <svg class="why-main-ico" viewBox="0 0 56 56" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M28 4L50 12V30C50 42 40 52 28 56C16 52 6 42 6 30V12Z"/>
+          <path d="M18 28L25 35L38 22"/>
+        </svg>
+        <div class="why-main-title">Partenaire Officiel<br>des Concessionnaires</div>
+        <div class="why-main-sub">Certifié · Assuré · Professionnel</div>
+      </div>
+      <div class="why-chip why-chip-tr">
+        <div class="why-chip-n">+98%</div>
+        <div class="why-chip-l">Satisfaction</div>
+      </div>
+      <div class="why-chip why-chip-bl">
+        <div class="why-chip-n">24h</div>
+        <div class="why-chip-l">Délai Réponse</div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-d1">
+      <div class="sec-label">Pourquoi Nous Choisir</div>
+      <h2 class="sec-title chrome">L'Excellence au<br>Service de Votre Marque</h2>
+      <p class="sec-sub">Nous comprenons les exigences du secteur premium. Chaque intervention s'adapte à vos contraintes opérationnelles.</p>
+      <div class="why-pts">
+        <div class="why-pt">
+          <div class="why-pt-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-pt-title">Produits Professionnels Certifiés</div>
+            <div class="why-pt-desc">Utilisation exclusive de produits homologués, sans aucun risque pour vos peintures, revêtements et matériaux.</div>
+          </div>
+        </div>
+        <div class="why-pt">
+          <div class="why-pt-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-pt-title">Interventions Sans Interruption</div>
+            <div class="why-pt-desc">Nous travaillons selon vos horaires — tôt le matin, en soirée ou le week-end. Aucune perturbation de votre activité.</div>
+          </div>
+        </div>
+        <div class="why-pt">
+          <div class="why-pt-ico">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="why-pt-title">Déplacement à Domicile · Paris & IDF</div>
+            <div class="why-pt-desc">Notre équipe se déplace directement dans vos locaux. Zéro transport de véhicule, zéro risque de transit.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div id="process">
+  <div class="process-wrap">
+    <div class="process-hd reveal">
+      <div class="sec-label" style="justify-content:center;">Notre Méthode</div>
+      <h2 class="sec-title chrome">Un Protocole Rigoureux<br>en 4 Étapes</h2>
+    </div>
+    <div class="process-grid">
+      <div class="pstep reveal">
+        <div class="pstep-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          <span class="pstep-n">1</span>
+        </div>
+        <div class="pstep-title">Évaluation & Devis</div>
+        <div class="pstep-desc">Analyse de vos besoins et de votre parc. Devis personnalisé sous 24h, sans engagement.</div>
+      </div>
+      <div class="pstep reveal reveal-d1">
+        <div class="pstep-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <rect x="3" y="4" width="18" height="18" rx="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
+          </svg>
+          <span class="pstep-n">2</span>
+        </div>
+        <div class="pstep-title">Planification</div>
+        <div class="pstep-desc">Coordination avec vos équipes pour des créneaux aux moments les moins impactants pour votre activité.</div>
+      </div>
+      <div class="pstep reveal reveal-d2">
+        <div class="pstep-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M12 2C12 2 6 9 6 14C6 17.3 8.7 20 12 20C15.3 20 18 17.3 18 14C18 9 12 2 12 2Z"/>
+            <path d="M9 14C9 14 9 17 12 17" stroke-dasharray="2 1.5"/>
+          </svg>
+          <span class="pstep-n">3</span>
+        </div>
+        <div class="pstep-title">Traitement Premium</div>
+        <div class="pstep-desc">Application de nos protocoles exclusifs avec soin et minutie. Chaque détail compte.</div>
+      </div>
+      <div class="pstep reveal reveal-d3">
+        <div class="pstep-circle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span class="pstep-n">4</span>
+        </div>
+        <div class="pstep-title">Contrôle Qualité</div>
+        <div class="pstep-desc">Inspection finale, photos de réception et compte-rendu détaillé de chaque intervention.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div id="testimonials">
+  <div class="testi-wrap">
+    <div class="reveal">
+      <div class="sec-label">Ils Nous Font Confiance</div>
+      <h2 class="sec-title chrome">Ce Que Disent<br>Nos Partenaires</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="tcard reveal">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">Un service d'une précision remarquable. Nos clients sont toujours épatés par la présentation des véhicules à la livraison. AutoShine Pro est devenu un partenaire incontournable.</p>
+        <div class="tcard-author">
+          <div class="tcard-name">Marc Lefèvre</div>
+          <div class="tcard-role">Directeur Général · BMW Paris 16ème</div>
+        </div>
+      </div>
+      <div class="tcard reveal reveal-d1">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">Réactivité, professionnalisme et résultats impeccables. Depuis notre partenariat, notre taux de satisfaction à la livraison a considérablement augmenté. Je recommande sans hésiter.</p>
+        <div class="tcard-author">
+          <div class="tcard-name">Sophie Martin</div>
+          <div class="tcard-role">Responsable Qualité · Mercedes-Benz IDF</div>
+        </div>
+      </div>
+      <div class="tcard reveal reveal-d2">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">L'équipe s'adapte parfaitement à nos contraintes et livre toujours un travail irréprochable. Nos véhicules d'exposition brillent en permanence. Rapport qualité-service imbattable.</p>
+        <div class="tcard-author">
+          <div class="tcard-name">Thomas Dupont</div>
+          <div class="tcard-role">Chef de Vente · Audi Paris Bercy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ZONE -->
+<div id="zone">
+  <div class="zone-wrap">
+    <div class="reveal">
+      <div class="sec-label">Zone d'Intervention</div>
+      <h2 class="sec-title chrome">Paris & Île-de-France</h2>
+      <p class="sec-sub">Nous couvrons l'ensemble de la région parisienne. Déplacement inclus dans nos tarifs.</p>
+    </div>
+    <div class="zone-grid">
+      <div class="zone-map-box reveal">
+        <svg viewBox="0 0 400 400" fill="none">
+          <circle cx="200" cy="200" r="160" stroke="#3b9eff" stroke-width=".8" stroke-dasharray="6 4"/>
+          <circle cx="200" cy="200" r="90"  stroke="#3b9eff" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <circle cx="200" cy="200" r="36"  stroke="#3b9eff" stroke-width="1.8" fill="rgba(59,158,255,.07)"/>
+          <line x1="40" y1="200" x2="360" y2="200" stroke="#3b9eff" stroke-width=".6"/>
+          <line x1="200" y1="40"  x2="200" y2="360" stroke="#3b9eff" stroke-width=".6"/>
+          <line x1="87"  y1="87"  x2="313" y2="313" stroke="#3b9eff" stroke-width=".4" opacity=".4"/>
+          <line x1="313" y1="87"  x2="87"  y2="313" stroke="#3b9eff" stroke-width=".4" opacity=".4"/>
+          <circle cx="200" cy="200" r="5" fill="#3b9eff"/>
+          <circle cx="200" cy="200" r="12" stroke="#3b9eff" stroke-width="1" fill="none" opacity=".5"/>
+          <circle cx="148" cy="158" r="3" fill="#3b9eff" opacity=".6"/>
+          <circle cx="265" cy="230" r="3" fill="#3b9eff" opacity=".6"/>
+          <circle cx="175" cy="275" r="3" fill="#3b9eff" opacity=".6"/>
+          <circle cx="252" cy="148" r="3" fill="#3b9eff" opacity=".6"/>
+          <circle cx="130" cy="250" r="2.5" fill="#3b9eff" opacity=".4"/>
+          <circle cx="290" cy="170" r="2.5" fill="#3b9eff" opacity=".4"/>
+        </svg>
+        <div class="zone-map-label">
+          <span class="zone-map-pin">📍</span>
+          <div class="zone-map-txt">Paris · Île-de-France</div>
+        </div>
+      </div>
+      <div class="zone-list reveal reveal-d1">
+        <div class="zone-row"><div class="zone-dot"></div>Paris (75) — Tous arrondissements</div>
+        <div class="zone-row"><div class="zone-dot"></div>Hauts-de-Seine (92) — Neuilly, La Défense, Boulogne</div>
+        <div class="zone-row"><div class="zone-dot"></div>Val-de-Marne (94) — Vincennes, Créteil, Vitry</div>
+        <div class="zone-row"><div class="zone-dot"></div>Seine-Saint-Denis (93) — Saint-Denis, Montreuil</div>
+        <div class="zone-row"><div class="zone-dot"></div>Yvelines (78) — Versailles, Saint-Germain-en-Laye</div>
+        <div class="zone-row"><div class="zone-dot"></div>Essonne (91) — Évry, Massy, Palaiseau</div>
+        <div class="zone-row"><div class="zone-dot"></div>Val-d'Oise (95) — Cergy, Pontoise, Sarcelles</div>
+        <div class="zone-row special"><div class="zone-dot alt"></div>Autres départements — Sur devis</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact">
+  <div class="contact-inner">
+    <div class="reveal">
+      <div class="sec-label">Contactez-Nous</div>
+      <h2 class="ci-title chrome">Démarrons<br>Notre Partenariat</h2>
+      <p class="ci-desc">Vous gérez une concession ou un groupe automobile en Île-de-France ? Contactez-nous pour un audit gratuit et un devis sur mesure sous 24h.</p>
+      <div class="ci-links">
+        <a href="tel:0624513144" class="ci-link">
+          <div class="ci-link-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 13a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2.22h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-link-lbl">Téléphone</div>
+            <div class="ci-link-val">06 24 51 31 44</div>
+          </div>
+        </a>
+        <a href="mailto:autoshinepro.contact@gmail.com" class="ci-link">
+          <div class="ci-link-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-link-lbl">Email</div>
+            <div class="ci-link-val">autoshinepro.contact@gmail.com</div>
+          </div>
+        </a>
+        <div class="ci-link" style="cursor:default;">
+          <div class="ci-link-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="ci-link-lbl">Localisation</div>
+            <div class="ci-link-val">Paris & Île-de-France</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-d1">
+      <div class="cf">
+        <div class="sec-label">Demande de Devis Gratuit</div>
+        <div class="frow">
+          <div class="fg"><label class="flbl">Nom</label><input type="text" class="finp" placeholder="Votre nom" id="fNom"></div>
+          <div class="fg"><label class="flbl">Prénom</label><input type="text" class="finp" placeholder="Votre prénom" id="fPrenom"></div>
+        </div>
+        <div class="fg"><label class="flbl">Concession / Groupe</label><input type="text" class="finp" placeholder="Nom de votre concession" id="fConces"></div>
+        <div class="frow">
+          <div class="fg"><label class="flbl">Téléphone</label><input type="tel" class="finp" placeholder="06 XX XX XX XX" id="fTel"></div>
+          <div class="fg"><label class="flbl">Email</label><input type="email" class="finp" placeholder="votre@email.com" id="fEmail"></div>
+        </div>
+        <div class="fg">
+          <label class="flbl">Service Souhaité</label>
+          <select class="fsel" id="fService">
+            <option value="" disabled selected>Sélectionner un service</option>
+            <option>Préparation à la Livraison</option>
+            <option>Entretien du Parc Exposition</option>
+            <option>Protection Céramique Premium</option>
+            <option>Reconditionnement Véhicules d'Occasion</option>
+            <option>Pack Complet Concessionnaire</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="flbl">Message</label>
+          <textarea class="ftxt" placeholder="Décrivez votre besoin : nombre de véhicules, fréquence souhaitée, zone…" id="fMsg"></textarea>
+        </div>
+        <button class="fsubmit" id="fSubmit">Envoyer Ma Demande</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="fbrand-name">AutoShine Pro</div>
+      <div class="fbrand-tag">Detailing Premium · Paris</div>
+      <p class="fbrand-desc">Partenaire officiel des concessionnaires automobiles en Île-de-France. Qualité showroom, où que vous soyez.</p>
+    </div>
+    <div>
+      <div class="fcol-title">Services</div>
+      <ul class="flinks">
+        <li><a href="#services">Préparation Livraison</a></li>
+        <li><a href="#services">Entretien Parc</a></li>
+        <li><a href="#services">Protection Céramique</a></li>
+        <li><a href="#services">Reconditionnement VO</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="fcol-title">Contact</div>
+      <ul class="flinks">
+        <li><a href="tel:0624513144">06 24 51 31 44</a></li>
+        <li><a href="mailto:autoshinepro.contact@gmail.com">autoshinepro.contact@gmail.com</a></li>
+        <li><a href="#zone">Paris & Île-de-France</a></li>
+        <li><a href="#contact">Demander un Devis</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 AutoShine Pro · Paris, France</div>
+    <div class="footer-copy">Detailing Premium Pour Concessionnaires</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// NAV SCROLL
+const nav = document.getElementById('nav');
+const burger = document.getElementById('burger');
+window.addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 60));
+burger.addEventListener('click', () => nav.classList.toggle('nav-mobile-open'));
+
+// HERO PARTICLES
+const hp = document.getElementById('hparticles');
+for(let i=0;i<22;i++){
+  const p = document.createElement('div');
+  p.className = 'hparticle';
+  const s = Math.random()*3.5+1;
+  p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;bottom:${Math.random()*15+2}%;--d:${(Math.random()*6+4).toFixed(1)}s;--del:${(Math.random()*7).toFixed(1)}s`;
+  hp.appendChild(p);
+}
+
+// REVEAL ON SCROLL
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('up'); revObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revEls.forEach(el => revObs.observe(el));
+
+// COUNTER ANIMATION
+const cnts = document.querySelectorAll('[data-cnt]');
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      const tgt = +e.target.dataset.cnt;
+      const suf = e.target.dataset.suf||'';
+      let cur=0, step=tgt/55;
+      const t = setInterval(()=>{
+        cur = Math.min(cur+step,tgt);
+        e.target.textContent = (tgt>=1000 ? (cur/1000).toFixed(1)+'k' : Math.floor(cur)) + suf;
+        if(cur>=tgt){
+          e.target.textContent = (tgt>=1000 ? (tgt/1000).toFixed(1)+'k' : tgt) + suf;
+          clearInterval(t);
+        }
+      },22);
+      cntObs.unobserve(e.target);
+    }
+  });
+},{ threshold:0.5 });
+cnts.forEach(el => cntObs.observe(el));
+
+// FORM SUBMIT
+const fSubmit = document.getElementById('fSubmit');
+fSubmit.addEventListener('click',()=>{
+  const nom   = document.getElementById('fNom').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  if(!nom||!email){ showToast('⚠ Veuillez renseigner votre nom et email.', false); return; }
+  fSubmit.disabled = true;
+  fSubmit.textContent = 'Envoi en cours…';
+  setTimeout(()=>{
+    fSubmit.textContent = '✓ Demande Envoyée';
+    fSubmit.style.background = 'linear-gradient(130deg,#1a7a4a,#2ecc71)';
+    showToast('✓ Demande reçue ! Nous vous contactons sous 24h.', true);
+    setTimeout(()=>{
+      fSubmit.textContent = 'Envoyer Ma Demande';
+      fSubmit.style.background = '';
+      fSubmit.disabled = false;
+    }, 3200);
+  }, 1400);
+});
+
+function showToast(msg, ok){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = ok ? '#3b9eff' : '#e74c3c';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 4200);
+}
+</script>
+</body>
+</html>
