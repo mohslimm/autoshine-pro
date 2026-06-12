@@ -1,14 +1,15 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { VARIANTS } from '@/lib/variants';
-import { Car, CheckCircle2, Shield, Sparkles } from 'lucide-react';
+import { Diamond, Layers, Hexagon, RefreshCcw } from 'lucide-react';
 
 const SERVICES_DATA = [
   {
     num: '01',
-    icon: <Car className="w-12 h-12" />,
+    icon: <Diamond strokeWidth={1} className="w-10 h-10" />,
     title: "Préparation\nà la Livraison",
     desc: "Finition irréprochable avant chaque remise au client. Votre réputation reflétée dans chaque véhicule.",
+    image: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&q=80&w=800",
     points: [
       "Nettoyage intérieur complet",
       "Polissage & lustrage carrosserie",
@@ -18,9 +19,10 @@ const SERVICES_DATA = [
   },
   {
     num: '02',
-    icon: <Sparkles className="w-12 h-12" />,
+    icon: <Layers strokeWidth={1} className="w-10 h-10" />,
     title: "Entretien du\nParc Exposition",
     desc: "Vos véhicules en vitrine maintenus dans un état showroom permanent. Programmes réguliers sur mesure.",
+    image: "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&q=80&w=800",
     points: [
       "Programme mensuel personnalisé",
       "Nettoyage jantes & pneus",
@@ -30,9 +32,10 @@ const SERVICES_DATA = [
   },
   {
     num: '03',
-    icon: <Shield className="w-12 h-12" />,
+    icon: <Hexagon strokeWidth={1} className="w-10 h-10" />,
     title: "Protection\nCéramique Premium",
     desc: "Revêtements céramique professionnels pour une protection 2 ans+ et un éclat permanent de vos véhicules.",
+    image: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=800",
     points: [
       "Traitement céramique longue durée",
       "Protection UV & contaminants",
@@ -42,9 +45,10 @@ const SERVICES_DATA = [
   },
   {
     num: '04',
-    icon: <CheckCircle2 className="w-12 h-12" />,
+    icon: <RefreshCcw strokeWidth={1} className="w-10 h-10" />,
     title: "Reconditionnement\nVéhicules d'Occasion",
     desc: "Remise en état complète des reprises pour maximiser leur valeur à la revente et réduire le délai de vente.",
+    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=800",
     points: [
       "Correction défauts carrosserie",
       "Décontamination ferreux",
@@ -57,7 +61,6 @@ const SERVICES_DATA = [
 export const Services = memo(() => {
   return (
     <section id="services" className="relative py-32 overflow-hidden bg-void">
-      {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-gold-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="section-padding relative z-10">
@@ -93,37 +96,42 @@ export const Services = memo(() => {
             <motion.div 
               key={svc.num}
               variants={VARIANTS.item}
-              className="relative p-10 md:p-14 rounded-3xl bg-gradient-to-b from-surface/40 to-primary/40 border border-white/[0.03] backdrop-blur-md group hover:-translate-y-3 transition-all duration-700 ease-out hover:shadow-[0_30px_60px_-20px_rgba(5,248,254,0.1)] hover:border-gold-500/20 overflow-hidden flex flex-col h-full"
+              className="relative p-10 md:p-14 rounded-[2rem] bg-surface/20 border border-white/[0.04] backdrop-blur-md group hover:-translate-y-3 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] hover:shadow-[0_40px_80px_-20px_rgba(5,248,254,0.12)] hover:border-gold-500/30 overflow-hidden flex flex-col h-full"
             >
-              {/* Subtle top glow line on hover */}
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gold-gradient scale-x-0 origin-center group-hover:scale-x-100 transition-transform duration-700 ease-out opacity-50" />
-              
-              {/* Floating ambient glow behind icon */}
-              <div className="absolute top-10 left-10 w-32 h-32 bg-gold-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute inset-0 z-0 overflow-hidden rounded-[2rem]">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-[0.25] group-hover:scale-110 transition-all duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] filter blur-[2px]"
+                  style={{ backgroundImage: `url(${svc.image})` }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#07090F] via-[#07090F]/80 to-transparent" />
+                <div className="absolute inset-0 bg-primary/40 mix-blend-multiply" />
+              </div>
+              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gold-gradient scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-[1.2s] ease-[cubic-bezier(0.22,1,0.36,1)] opacity-70 z-20" />
+              <div className="absolute top-10 left-10 w-32 h-32 bg-gold-500/20 rounded-full blur-[50px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none z-10" />
 
-              <div className="relative z-10 flex-1 flex flex-col">
+              <div className="relative z-20 flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-10">
-                  <div className="w-16 h-16 rounded-2xl bg-white/[0.02] border border-white/[0.05] flex items-center justify-center text-text-muted group-hover:text-gold-500 group-hover:scale-110 group-hover:bg-gold-500/10 transition-all duration-500 shadow-sm">
+                  <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center text-text-muted group-hover:text-gold-500 group-hover:scale-110 group-hover:bg-gold-500/10 transition-all duration-500 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] backdrop-blur-lg">
                     {svc.icon}
                   </div>
-                  <div className="font-display text-[1rem] font-medium tracking-[0.2em] text-text-muted/30 group-hover:text-gold-500/40 transition-colors duration-500">
+                  <div className="font-display text-[1rem] font-medium tracking-[0.2em] text-text-muted/40 group-hover:text-gold-500/60 transition-colors duration-500">
                     {svc.num}
                   </div>
                 </div>
 
-                <h3 className="font-display text-2xl lg:text-3xl font-medium text-text-primary mb-4 leading-tight whitespace-pre-line group-hover:text-gold-400 transition-colors duration-500">
+                <h3 className="font-display text-2xl lg:text-3xl font-medium text-text-primary mb-4 leading-tight whitespace-pre-line group-hover:text-gold-400 transition-colors duration-500 drop-shadow-sm">
                   {svc.title}
                 </h3>
 
-                <p className="text-[0.9rem] font-light text-text-muted leading-[1.8] mb-10 flex-1">
+                <p className="text-[0.95rem] font-light text-text-muted leading-[1.8] mb-10 flex-1 drop-shadow-sm">
                   {svc.desc}
                 </p>
 
-                <ul className="flex flex-col gap-4 mt-auto">
+                <ul className="flex flex-col gap-5 mt-auto border-t border-white/[0.05] pt-8">
                   {svc.points.map((pt, i) => (
                     <li key={i} className="flex items-start gap-4">
-                      <span className="w-1.5 h-1.5 rounded-full bg-text-muted/20 mt-2 shrink-0 group-hover:bg-gold-500 group-hover:shadow-[0_0_8px_var(--gold-500)] transition-all duration-500" />
-                      <span className="font-mono text-[0.75rem] font-medium tracking-wide text-text-muted/80 leading-relaxed uppercase group-hover:text-text-primary transition-colors duration-500">{pt}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-text-muted/30 mt-2 shrink-0 group-hover:bg-gold-500 group-hover:shadow-[0_0_10px_var(--gold-glow)] transition-all duration-500" />
+                      <span className="font-body text-[0.85rem] font-light tracking-wide text-text-muted leading-relaxed group-hover:text-text-primary transition-colors duration-500">{pt}</span>
                     </li>
                   ))}
                 </ul>

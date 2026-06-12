@@ -58,7 +58,6 @@ export const Process = memo(() => {
           viewport={{ once: true, margin: "-100px" }}
           variants={VARIANTS.container}
         >
-          {/* Connecting Line */}
           <div className="hidden lg:block absolute top-9 left-[12%] right-[12%] h-[1px] bg-gradient-to-r from-transparent via-gold-500/30 to-transparent pointer-events-none" />
 
           {STEPS.map((step) => (
@@ -69,16 +68,16 @@ export const Process = memo(() => {
             >
               <div className="w-[72px] h-[72px] rounded-full border border-border-subtle bg-primary mx-auto mb-6 flex items-center justify-center text-gold-500 relative z-10 transition-all duration-400 group-hover:border-gold-500 group-hover:bg-surface group-hover:shadow-[0_0_32px_var(--gold-glow)]">
                 {step.icon}
-                
+
                 <div className="absolute -top-2 -right-2 w-[22px] h-[22px] rounded-full bg-gold-gradient text-[#1A1200] font-mono text-[0.62rem] font-bold flex items-center justify-center shadow-md">
                   {step.num}
                 </div>
               </div>
-              
+
               <div className="font-display text-[0.97rem] font-semibold text-text-primary mb-2.5 group-hover:text-gold-400 transition-colors duration-300">
                 {step.title}
               </div>
-              
+
               <div className="text-[0.84rem] font-light text-text-muted leading-[1.75]">
                 {step.desc}
               </div>

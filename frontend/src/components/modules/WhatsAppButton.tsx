@@ -5,7 +5,7 @@ export const WhatsAppButton = memo(() => {
   // Use a placeholder number or an environment variable if provided
   const phoneNumber = "33600000000"; // Remplacez par le vrai numéro
   const message = "Bonjour, je souhaite obtenir un devis pour ma concession.";
-  
+
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (

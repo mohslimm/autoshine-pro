@@ -7,8 +7,6 @@ export const Footer = memo(() => {
   return (
     <footer className="bg-[#01060f] border-t border-border-subtle pt-16 pb-8">
       <div className="section-padding py-0 md:py-0 grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 lg:gap-16 mb-12">
-        
-        {/* Brand */}
         <div>
           <Link to="/" className="inline-block mb-6">
             <motion.img 
@@ -31,8 +29,6 @@ export const Footer = memo(() => {
             Partenaire officiel des concessionnaires automobiles en Île-de-France. Qualité showroom, où que vous soyez.
           </p>
         </div>
-
-        {/* Services Links */}
         <div>
           <div className="font-mono text-[0.68rem] font-bold tracking-[0.26em] uppercase text-text-primary mb-6">Services</div>
           <ul className="flex flex-col gap-3">
@@ -42,8 +38,6 @@ export const Footer = memo(() => {
             <li><a href="/#services" className="text-[0.86rem] font-light text-text-muted hover:text-gold-400 transition-colors">Reconditionnement VO</a></li>
           </ul>
         </div>
-
-        {/* Contact & Legal Links */}
         <div>
           <div className="font-mono text-[0.68rem] font-bold tracking-[0.26em] uppercase text-text-primary mb-6">Contact & Légal</div>
           <ul className="flex flex-col gap-3">

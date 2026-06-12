@@ -32,10 +32,10 @@ export const Contact = memo(() => {
   const onSubmit = async (data: ContactForm) => {
     setStatus('loading');
     setErrorMessage('');
-    
+
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
-    
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -45,7 +45,7 @@ export const Contact = memo(() => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Remplacez par votre clé générée pour autoshinepro.contact@gmail.com
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY || "c2727cd4-faf1-423d-a5a5-640af5e931b1",
           subject: "Nouvelle demande de devis AutoShine Pro",
           from_name: "AutoShine Pro Contact",
           Nom: data.lastName,
@@ -60,7 +60,7 @@ export const Contact = memo(() => {
 
       clearTimeout(timeoutId);
       const result = await response.json();
-      
+
       if (result.success) {
         setStatus('success');
         reset();
@@ -81,13 +81,10 @@ export const Contact = memo(() => {
 
   return (
     <section id="contact" className="bg-primary relative overflow-hidden">
-      {/* Background elements */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold-glow blur-[120px] rounded-full pointer-events-none opacity-50" />
-      
+
       <div className="section-padding">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-20">
-          
-          {/* Left Column: Info */}
           <motion.div 
             initial="initial"
             whileInView="animate"
@@ -99,11 +96,11 @@ export const Contact = memo(() => {
               <span className="w-7 h-[1px] bg-gold-500" />
               Contactez-Nous
             </motion.div>
-            
+
             <motion.h2 variants={VARIANTS.item} className="font-display text-[clamp(1.7rem,3vw,2.5rem)] font-bold leading-tight gold-gradient-text mb-6">
               Démarrons<br/>Notre Partenariat
             </motion.h2>
-            
+
             <motion.p variants={VARIANTS.item} className="text-[0.9rem] font-light text-text-muted leading-[1.82] mb-12 max-w-[450px]">
               Vous gérez une concession ou un groupe automobile en Île-de-France ? Contactez-nous pour un audit gratuit et un devis sur mesure sous 24h.
             </motion.p>
@@ -118,7 +115,7 @@ export const Contact = memo(() => {
                   <div className="font-display text-[0.97rem] text-text-primary group-hover:text-gold-400 transition-colors duration-300">{CONTACT_INFO.phone}</div>
                 </div>
               </a>
-              
+
               <a href={`mailto:${CONTACT_INFO.email}`} className="flex items-center gap-5 p-5 bg-surface border border-border-subtle group hover:border-gold-500 hover:bg-gold-500/5 transition-all duration-300">
                 <div className="w-12 h-12 shrink-0 bg-gold-500/10 flex items-center justify-center text-gold-500">
                   <Mail className="w-[18px] h-[18px]" />
@@ -140,8 +137,6 @@ export const Contact = memo(() => {
               </div>
             </motion.div>
           </motion.div>
-
-          {/* Right Column: Form */}
           <motion.div 
             initial="initial"
             whileInView="animate"
@@ -156,8 +151,6 @@ export const Contact = memo(() => {
 
             <div className="relative min-h-[500px]">
               <AnimatePresence mode="wait">
-                
-                {/* Form State */}
                 {(status === 'idle' || status === 'error') && (
                   <motion.form 
                     key="form"
@@ -239,8 +232,6 @@ export const Contact = memo(() => {
                     </button>
                   </motion.form>
                 )}
-
-                {/* Loading State */}
                 {status === 'loading' && (
                   <motion.div 
                     key="loading"
@@ -255,8 +246,6 @@ export const Contact = memo(() => {
                     </div>
                   </motion.div>
                 )}
-
-                {/* Success State */}
                 {status === 'success' && (
                   <motion.div 
                     key="success"
@@ -285,7 +274,7 @@ export const Contact = memo(() => {
               </AnimatePresence>
             </div>
           </motion.div>
-          
+
         </div>
       </div>
     </section>

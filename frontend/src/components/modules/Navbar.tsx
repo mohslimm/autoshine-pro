@@ -33,8 +33,6 @@ export const Navbar = memo(() => {
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex items-center justify-between">
-          
-          {/* Gauche : Logo */}
           <Link to="/" className="flex items-center group shrink-0">
             <motion.img 
               src="/images/logo-notxt.png" 
@@ -51,8 +49,6 @@ export const Navbar = memo(() => {
               transition={{ duration: 0.4, ease: "easeOut" }}
             />
           </Link>
-
-          {/* Centre : Navigation & Badge */}
           <div className="hidden lg:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
             <ul className="flex items-center gap-8">
               {navLinks.map((link) => (
@@ -66,16 +62,14 @@ export const Navbar = memo(() => {
                 </li>
               ))}
             </ul>
-            
+
             <div className="w-px h-4 bg-border-subtle hidden xl:block" />
-            
+
             <div className="hidden xl:flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-gold-500 shadow-[0_0_8px_var(--gold-500)] animate-pulse" />
               <span className="font-body text-[0.65rem] uppercase tracking-[0.25em] text-gold-500/80">Partenaire Officiel</span>
             </div>
           </div>
-
-          {/* Droite : CTA */}
           <div className="hidden md:flex shrink-0">
             <a 
               href="#contact" 
@@ -84,8 +78,6 @@ export const Navbar = memo(() => {
               Demander un devis
             </a>
           </div>
-
-          {/* Mobile Menu Toggle */}
           <button 
             className="md:hidden p-2 text-text-muted hover:text-text-primary transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -95,8 +87,6 @@ export const Navbar = memo(() => {
           </button>
         </div>
       </motion.nav>
-
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div

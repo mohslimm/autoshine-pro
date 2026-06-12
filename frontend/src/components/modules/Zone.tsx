@@ -36,48 +36,20 @@ export const Zone = memo(() => {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-16 items-start">
-          
-          {/* Map Visual */}
           <motion.div 
             initial="initial"
             whileInView="animate"
             viewport={{ once: true, margin: "-100px" }}
             variants={VARIANTS.item}
-            className="bg-surface border border-border-subtle h-[380px] flex items-center justify-center relative overflow-hidden group"
+            className="bg-surface border border-border-subtle h-[420px] flex items-center justify-center relative overflow-hidden group rounded-[2rem]"
           >
-            {/* SVG Background Map Rings */}
-            <svg viewBox="0 0 400 400" fill="none" className="absolute inset-0 w-full h-full opacity-20 text-gold-500 transition-opacity duration-700 group-hover:opacity-40">
-              <circle cx="200" cy="200" r="160" stroke="currentColor" strokeWidth=".8" strokeDasharray="6 4" />
-              <circle cx="200" cy="200" r="90" stroke="currentColor" strokeWidth="1.2" strokeDasharray="4 3" />
-              <circle cx="200" cy="200" r="36" stroke="currentColor" strokeWidth="1.8" fill="var(--gold-glow)" />
-              <line x1="40" y1="200" x2="360" y2="200" stroke="currentColor" strokeWidth=".6" />
-              <line x1="200" y1="40" x2="200" y2="360" stroke="currentColor" strokeWidth=".6" />
-              <line x1="87" y1="87" x2="313" y2="313" stroke="currentColor" strokeWidth=".4" opacity=".4" />
-              <line x1="313" y1="87" x2="87" y2="313" stroke="currentColor" strokeWidth=".4" opacity=".4" />
-              
-              <circle cx="200" cy="200" r="5" fill="currentColor" />
-              <circle cx="200" cy="200" r="12" stroke="currentColor" strokeWidth="1" fill="none" opacity=".5">
-                <animate attributeName="r" values="12;24;12" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".5;0;.5" dur="3s" repeatCount="indefinite" />
-              </circle>
-              
-              <circle cx="148" cy="158" r="3" fill="currentColor" opacity=".6" />
-              <circle cx="265" cy="230" r="3" fill="currentColor" opacity=".6" />
-              <circle cx="175" cy="275" r="3" fill="currentColor" opacity=".6" />
-              <circle cx="252" cy="148" r="3" fill="currentColor" opacity=".6" />
-              <circle cx="130" cy="250" r="2.5" fill="currentColor" opacity=".4" />
-              <circle cx="290" cy="170" r="2.5" fill="currentColor" opacity=".4" />
-            </svg>
-
-            <div className="text-center relative z-10">
-              <span className="text-[2.6rem] block mb-3 drop-shadow-[0_0_15px_var(--gold-glow)]">📍</span>
-              <div className="font-mono text-[0.72rem] tracking-[0.22em] uppercase text-text-primary font-semibold bg-surface/50 backdrop-blur-sm px-4 py-1.5 border border-border-subtle inline-block">
-                Paris · Île-de-France
-              </div>
-            </div>
+            <img
+              src="/paris-map.gif"
+              alt="Carte des arrondissements de Paris"
+              className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
+              style={{ filter: 'invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9)' }}
+            />
           </motion.div>
-
-          {/* Zones List */}
           <motion.div 
             className="flex flex-col gap-3"
             initial="initial"
@@ -100,7 +72,7 @@ export const Zone = memo(() => {
               </motion.div>
             ))}
           </motion.div>
-          
+
         </div>
       </div>
     </section>

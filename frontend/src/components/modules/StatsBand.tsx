@@ -16,7 +16,7 @@ const Counter = memo(({ value, suffix = '' }: { value: number; suffix?: string }
         const elapsedTime = currentTime - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-        
+
         setCount(Math.floor(easeOutQuart * end));
 
         if (progress < 1) {
