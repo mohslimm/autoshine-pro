@@ -7,17 +7,17 @@ const TESTIMONIALS = [
   {
     quote: "Un service d'une précision remarquable. Nos clients sont toujours épatés par la présentation des véhicules à la livraison. AutoShine Pro est devenu un partenaire incontournable.",
     name: "Marc Lefèvre",
-    role: "Directeur Général · BMW Paris 16ème"
+    role: "Directeur Général · BMW Toulon"
   },
   {
     quote: "Réactivité, professionnalisme et résultats impeccables. Depuis notre partenariat, notre taux de satisfaction à la livraison a considérablement augmenté. Je recommande sans hésiter.",
     name: "Sophie Martin",
-    role: "Responsable Qualité · Mercedes-Benz IDF"
+    role: "Responsable Qualité · Mercedes-Benz Var"
   },
   {
     quote: "L'équipe s'adapte parfaitement à nos contraintes et livre toujours un travail irréprochable. Nos véhicules d'exposition brillent en permanence. Rapport qualité-service imbattable.",
     name: "Thomas Dupont",
-    role: "Chef de Vente · Audi Paris Bercy"
+    role: "Chef de Vente · Audi La Seyne-sur-Mer"
   }
 ];
 

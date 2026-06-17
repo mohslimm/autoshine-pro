@@ -94,7 +94,7 @@ export const StatsBand = memo(() => {
             className="text-center pt-8 md:pt-0"
           >
             <div className="font-display text-4xl md:text-5xl font-bold gold-gradient-text leading-none mb-2">
-              Paris&nbsp;IDF
+              Toulon&nbsp;Var
             </div>
             <div className="font-mono text-[0.68rem] font-semibold tracking-[0.2em] uppercase text-text-muted">
               Zone d'Intervention

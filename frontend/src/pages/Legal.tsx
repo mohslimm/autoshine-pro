@@ -70,7 +70,7 @@ export const TermsOfService = () => {
           <p>
             Le site AutoShine Pro est édité par :<br/>
             <strong>AutoShine Pro SAS</strong><br/>
-            Siège social : Paris, France<br/>
+            Siège social : Toulon, France<br/>
             E-mail : autoshinepro.contact@gmail.com
           </p>
           
@@ -81,7 +81,7 @@ export const TermsOfService = () => {
           <p>Nos prestations de détailing premium sont exclusivement réservées aux professionnels de l'automobile (concessionnaires, loueurs). Toute intervention fait l'objet d'un devis préalable validé par le client. Les prix sont exprimés en euros hors taxes (HT).</p>
 
           <h2>4. Responsabilité</h2>
-          <p>AutoShine Pro s'engage à apporter tout le soin nécessaire à la réalisation des prestations. En cas de litige, seul le tribunal de commerce de Paris sera compétent.</p>
+          <p>AutoShine Pro s'engage à apporter tout le soin nécessaire à la réalisation des prestations. En cas de litige, seul le tribunal de commerce de Toulon sera compétent.</p>
         </>
       }
     />

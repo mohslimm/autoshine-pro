@@ -16,7 +16,7 @@ const WHY_POINTS = [
   },
   {
     icon: <MapPin className="w-5 h-5" />,
-    title: "Déplacement à Domicile · Paris & IDF",
+    title: "Déplacement à Domicile · Toulon & Var",
     desc: "Notre équipe se déplace directement dans vos locaux. Zéro transport de véhicule, zéro risque de transit."
   }
 ];

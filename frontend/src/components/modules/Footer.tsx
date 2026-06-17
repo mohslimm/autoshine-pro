@@ -24,9 +24,9 @@ export const Footer = memo(() => {
               transition={{ duration: 0.4, ease: "easeOut" }}
             />
           </Link>
-          <div className="font-mono text-[0.65rem] font-semibold tracking-[0.26em] uppercase text-gold-500 mb-5">Detailing Premium · Paris</div>
+          <div className="font-mono text-[0.65rem] font-semibold tracking-[0.26em] uppercase text-gold-500 mb-5">Detailing Premium · Toulon</div>
           <p className="text-[0.84rem] font-light text-text-muted leading-[1.8] max-w-[400px]">
-            Partenaire officiel des concessionnaires automobiles en Île-de-France. Qualité showroom, où que vous soyez.
+            Partenaire officiel des concessionnaires automobiles dans le Var. Qualité showroom, où que vous soyez.
           </p>
         </div>
         <div>
@@ -53,7 +53,7 @@ export const Footer = memo(() => {
       <div className="section-padding py-0 md:py-0">
         <div className="border-t border-border-subtle pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <div className="text-[0.76rem] text-text-muted/60">
-            © {new Date().getFullYear()} AutoShine Pro · Paris, France
+            © {new Date().getFullYear()} AutoShine Pro · Toulon, France
           </div>
           <div className="text-[0.76rem] text-text-muted/60">
             Detailing Premium Pour Concessionnaires

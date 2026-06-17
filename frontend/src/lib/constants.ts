@@ -13,5 +13,5 @@ export const EASE = {
 export const CONTACT_INFO = {
   phone: "06 24 51 31 44",
   email: "autoshinepro.contact@gmail.com",
-  zone: "Paris & Île-de-France"
+  zone: "Toulon & Var"
 } as const;
